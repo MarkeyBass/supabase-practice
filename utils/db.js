@@ -1,5 +1,6 @@
 import pg from "pg";
 import dotenv from "dotenv";
+import { createClient } from "@supabase/supabase-js";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
@@ -16,7 +17,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 let pool = null;
+let supabase = null;
 
+// PostgreSQL connection pool (for raw SQL queries)
 export function getPool() {
   if (!pool) {
     pool = new Pool({
@@ -28,6 +31,21 @@ export function getPool() {
     });
   }
   return pool;
+}
+
+// Supabase client (for Supabase query language)
+export function getSupabaseClient() {
+  if (!supabase) {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error("SUPABASE_URL and SUPABASE_ANON_KEY must be set in .env file");
+    }
+    
+    supabase = createClient(supabaseUrl, supabaseKey);
+  }
+  return supabase;
 }
 
 export async function initDb() {
