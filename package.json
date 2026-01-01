@@ -1,0 +1,25 @@
+{
+  "name": "supabase-practice",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Practice exercises for converting raw PostgreSQL queries to Supabase query language",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.11.3",
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.1.11"
+  },
+  "devDependencies": {
+    "supabase": "^2.0.0"
+  }
+}
+
