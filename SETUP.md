@@ -83,7 +83,7 @@ DB_HOST=localhost
 DB_PORT=54322
 DB_USER=postgres
 DB_PASSWORD=postgres
-DB_NAME=postgres
+DB_NAME=postgress
 
 # Supabase Connection (get these from 'supabase status')
 SUPABASE_URL=http://localhost:54321
